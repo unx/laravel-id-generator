@@ -71,15 +71,14 @@ class IdGenerator
                 $whereString .= $row[0] . "=" . $row[1] . " AND ";
             }
         }
-        $whereString = rtrim($whereString, 'AND ');
 
-
-        $totalQuery = sprintf("SELECT count(%s) total FROM %s %s", $field, $configArr['table'], $whereString);
+        $totalQuery = sprintf("SELECT count(%s) total FROM %s %s", $field, $configArr['table'],  rtrim($whereString, 'AND '););
         $total = DB::select($totalQuery);
-
+        
+        $whereString = ltrim($whereString, ' WHERE');
         if ($total[0]->total) {
             if ($resetOnPrefixChange) {
-                $maxQuery = sprintf("SELECT MAX(%s) maxId from %s WHERE %s like %s", $field, $table, $field, "'" . $prefix . "%'");
+                $maxQuery = sprintf("SELECT MAX(%s) maxId from %s WHERE %s %s like %s", $whereString, $field, $table, $field, "'" . $prefix . "%'");
             } else {
                 $maxQuery = sprintf("SELECT MAX(%s) maxId from %s", $field, $table);
             }
