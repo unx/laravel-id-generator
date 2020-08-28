@@ -19,13 +19,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Unx\\LaravelIdGenerator\\": "src/"
+            "Haruncpi\\LaravelIdGenerator\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Unx\\LaravelIdGenerator\\IdGeneratorServiceProvider"
+                "Haruncpi\\LaravelIdGenerator\\IdGeneratorServiceProvider"
             ]
         }
     }
