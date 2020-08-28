@@ -72,7 +72,7 @@ class IdGenerator
             }
         }
 
-        $totalQuery = sprintf("SELECT count(%s) total FROM %s %s", $field, $configArr['table'],  rtrim($whereString, 'AND '););
+        $totalQuery = sprintf("SELECT count(%s) total FROM %s %s", $field, $configArr['table'],  rtrim($whereString, 'AND '));
         $total = DB::select($totalQuery);
         
         $whereString = ltrim($whereString, ' WHERE');
