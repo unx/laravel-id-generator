@@ -78,7 +78,7 @@ class IdGenerator
         $whereString = ltrim($whereString, ' WHERE');
         if ($total[0]->total) {
             if ($resetOnPrefixChange) {
-                $maxQuery = sprintf("SELECT MAX(%s) maxId from %s WHERE %s %s like %s", $whereString, $field, $table, $field, "'" . $prefix . "%'");
+                $maxQuery = sprintf("SELECT MAX(%s) maxId from %s WHERE %s %s like %s", $field, $table, $whereString, $field, "'" . $prefix . "%'");
             } else {
                 $maxQuery = sprintf("SELECT MAX(%s) maxId from %s", $field, $table);
             }
